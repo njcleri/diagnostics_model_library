@@ -40,9 +40,9 @@ class CloudyModel:
         self.geometry = geometry
         self.set_model_parameter(f'{geometry}')
         
-    def set_abundances(self, abundances, grains='no grains'):
-        self.abundances = abundances
-        self.set_model_parameter(f'abundances {abundances} {grains}')
+    def set_abundance_pattern(self, abundance_pattern, grains='no grains'):
+        self.abundance_pattern = abundance_pattern
+        self.set_model_parameter(f'abundance_pattern {abundance_pattern} {grains}')
         
     def set_grains(self, grains):
         self.grains = grains
@@ -73,22 +73,22 @@ class CloudyModel:
         self.save_lines_emergent()
         self.save_lines_intrinsic()
         
-    def build_default_model(self, sed='NGC5548.sed', hden=2, abundances='gass10', grains='Orion', gas_metallicity=1.0):
+    def build_default_model(self, sed='NGC5548.sed', hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0):
         self.model = []
         self.set_sed(sed)
         self.set_hden(hden)
-        self.set_abundances(abundances)
+        self.set_abundance_pattern(abundance_pattern)
         self.set_grains(grains)
         self.set_metals_and_grains(gas_metallicity)
         self.add_grid('ionization parameter', -4, -1, 0.25)
         self.set_model_parameter('iterate_to_convergence')
         self.save_all() 
         
-    def build_cleri_model(self, sed='NGC5548.sed', hden=2, abundances='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
+    def build_cleri_model(self, sed='NGC5548.sed', hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
         self.model = []
         self.set_sed(sed)
         self.set_hden(hden)
-        self.set_abundances(abundances)
+        self.set_abundance_pattern(abundance_pattern)
         self.set_grains(grains)
         self.set_metals_and_grains(gas_metallicity)
         for element in element_scale_factor_dict.keys():
@@ -98,11 +98,11 @@ class CloudyModel:
         self.save_all()   
         
     def build_template_model_bpass(self, sed="BPASSv2.2.1_imf135_300_burst_binary.ascii", age=1e7, stellar_metallicity=-1, 
-                                  hden=2, abundances='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
+                                  hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
         self.model = []
         self.set_star(sed, age, stellar_metallicity)
         self.set_hden(hden)
-        self.set_abundances(abundances)
+        self.set_abundance_pattern(abundance_pattern)
         self.set_grains(grains)
         self.set_metals_and_grains(gas_metallicity)
         for element in element_scale_factor_dict.keys():
