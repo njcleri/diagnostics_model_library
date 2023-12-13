@@ -8,5 +8,5 @@ grid -4 to -1 step 0.25
 iterate_to_convergence
 save overview ".ovr" last
 save continuum units angstroms ".con" last
-save linelist column emergent absolute last units angstroms ".elin" "LineList_HII_NJC.dat"
-save linelist column intrinsic absolute last units angstroms ".elin" "LineList_HII_NJC.dat"
+save linelist column emergent absolute last units angstroms ".elin" "/Users/alvis/Research/cloudy_modeling/diagnostics_model_library/LineList_HII_NJC.dat"
+save linelist column intrinsic absolute last units angstroms ".elin" "/Users/alvis/Research/cloudy_modeling/diagnostics_model_library/LineList_HII_NJC.dat"
